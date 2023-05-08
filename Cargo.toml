@@ -1,0 +1,26 @@
+[package]
+name = "kernel"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "kernel"
+test = false
+bench = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
+[dependencies]
+bootloader = { version = "0.9.23", features = ["map_physical_memory"] }
+volatile = "0.2.6"
+lazy_static = { version = "1.0", features = ["spin_no_std"] }
+spin = "0.5.2"
+bitflags = "1.2.1"
+x86_64 = "0.14.3"
+linked_list_allocator = "0.9.0"
